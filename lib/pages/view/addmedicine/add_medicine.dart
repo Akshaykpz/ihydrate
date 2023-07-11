@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_flushbar/flutter_flushbar.dart';
+import 'package:provider/provider.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 import 'package:water_tracker/models/category/database_functions.dart';
-import 'package:water_tracker/widgets/pages/addmedicine/celender.dart';
+import 'package:water_tracker/pages/view/addmedicine/celender.dart';
 
-import 'package:water_tracker/widgets/pages/addmedicine/time.dart';
+import 'package:water_tracker/pages/view/addmedicine/time.dart';
+
+import '../../../provider/medicine.dart';
 
 class AddMedicine extends StatefulWidget {
   const AddMedicine({super.key});
@@ -143,11 +146,11 @@ class _AddMedicineState extends State<AddMedicine> {
                         if (_formkey.currentState!.validate()) {
                           Navigator.pop(context);
 
-                          await addmed(
-                            pillControler: _timeController,
-                            nameditingController: _nameditingController,
-                            doseeditingContoleer: _doseeditingContoleer,
-                          );
+                        context.read<MedcineProivder>().addmed(
+                                pillControler: _timeController,
+                                nameditingController: _nameditingController,
+                                doseeditingContoleer: _doseeditingContoleer,
+                              );
                           _doseeditingContoleer.clear();
                           _nameditingController.clear();
                           _timeController.clear();

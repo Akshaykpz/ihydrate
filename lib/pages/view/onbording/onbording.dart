@@ -6,14 +6,16 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:water_tracker/models/category/database_functions.dart';
 
-import 'package:water_tracker/widgets/pages/home/side_bar.dart';
+import 'package:water_tracker/pages/view/home/side_bar.dart';
 
-import 'package:water_tracker/widgets/pages/onbording/skip2.dart';
+import 'package:water_tracker/pages/view/onbording/skip2.dart';
 
 import '../../../models/category/database.dart';
+import '../../../provider/water.dart';
 import 'skipone.dart';
 
 class OnBoard extends StatefulWidget {
@@ -70,7 +72,6 @@ class _OnBoardState extends State<OnBoard> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: currentIndex % 1 == 0 ? kwhite : kblue,
-     
       body: Padding(
         padding: const EdgeInsets.all(25),
         child: PageView.builder(
@@ -104,13 +105,11 @@ class _OnBoardState extends State<OnBoard> {
                                     const EdgeInsets.symmetric(horizontal: 3.0),
                                 width: currentIndex == index ? 25 : 8,
                                 height: 8,
-                             
                               ),
                             ]);
                       },
                     ),
                   ),
-                 
                   index == 1
                       ? const Text(
                           'Stay Healthy and Refreshed\n with Our Water App 🌊',
@@ -128,35 +127,35 @@ class _OnBoardState extends State<OnBoard> {
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15,
                                     fontStyle: FontStyle.italic)),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  height: 150,
-                                  width: 100,
-                                  child: Form(
-                                    child: NumberPicker(
-                                      value: _currentValue,
-                                      minValue: 0,
-                                      maxValue: 15000,
-                                      step: 1000,
-                                      onChanged: (value) => setState(() {
-                                        _currentValue = value;
-                                        print(_currentValue);
-
-                                        goalRetriever(
-                                            currentValue: _currentValue);
-                                      }),
+                            Consumer<WaterProivder>(
+                                builder: (context, WaterProivder, child) {
+                              final int goalProvider =
+                                  WaterProivder.displayGoal();
+                          return    Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    height: 150,
+                                    width: 100,
+                                    child: Form(
+                                      child: NumberPicker(
+                                          value: _currentValue,
+                                          minValue: 0,
+                                          maxValue: 15000,
+                                          step: 1000,
+                                          onChanged: (value) {
+                                            WaterProivder.goalRetriever(
+                                                currentValue: value);
+                                          }),
                                     ),
                                   ),
-                                ),
-                               
-                                const Text('ML',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ))
-                              ],
-                            ),
+                                  const Text('ML',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ))
+                                ],
+                              );
+                            }),
                           ],
                         )
                       : const SizedBox(),

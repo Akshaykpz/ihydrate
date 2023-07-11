@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:water_tracker/boxes/box.dart';
-import 'package:water_tracker/widgets/pages/home/homepage/delete_data.dart';
+import 'package:water_tracker/pages/view/home/homepage/delete_data.dart';
 
 import '../../../models/category/database.dart';
 

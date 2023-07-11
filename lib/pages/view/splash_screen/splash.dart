@@ -28,7 +28,7 @@
 // }
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:water_tracker/widgets/pages/home/side_bar.dart';
+import 'package:water_tracker/pages/view/home/side_bar.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

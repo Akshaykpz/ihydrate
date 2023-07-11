@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
+import 'package:water_tracker/provider/water.dart';
 
 import '../../../../boxes/box.dart';
 import '../../../../models/category/database.dart';
@@ -15,7 +16,7 @@ void showAlert(BuildContext context) {
 Future<void> delete(WaterModel waterModel) async {
   await waterModel.delete();
   ProgressValue.getData();
-  grap(Boxes.getdata(), DateTime.now());
+ WaterProivder(). grap(Boxes.getdata(), DateTime.now());
 }
 
 showAlertmed(BuildContext context, index, data) {

@@ -4,8 +4,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 
 import 'package:water_tracker/models/category/database.dart';
-import 'package:water_tracker/widgets/pages/home/homepage/delete_data.dart';
-import 'package:water_tracker/widgets/pages/home/homepage/home_pageui.dart';
+import 'package:water_tracker/pages/view/home/homepage/delete_data.dart';
+import 'package:water_tracker/pages/view/home/homepage/home_pageui.dart';
 
 import '../home/Setting/Settings.dart';
 

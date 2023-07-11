@@ -1,13 +1,18 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_flushbar/flutter_flushbar.dart';
+import 'package:provider/provider.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
-
+import 'package:logging/logging.dart';
 import 'package:water_tracker/boxes/box.dart';
 
 import 'package:water_tracker/models/category/database.dart';
 import 'package:water_tracker/models/category/database_functions.dart';
-import 'package:water_tracker/widgets/pages/home/homepage/water_page.dart';
+import 'package:water_tracker/pages/view/home/homepage/water_page.dart';
+
+import '../../../provider/water.dart';
 
 class AddWaterData extends StatefulWidget {
   const AddWaterData({super.key});
@@ -103,13 +108,16 @@ class _AddWaterdataState extends State<AddWaterData> {
                           //     subtitle: _nameditingController.text);
                           showTopSnackbar(context);
                           int intValue = int.parse(_nameditingController.text);
-                          adddata(
+
+                          Provider.of<WaterProivder>(context, listen: false)
+                              .adddata(
                             texteditingcontroller: intValue,
                             nameditingController: _texteditingcontroller.text,
                           );
 
                           _nameditingController.clear();
                           _texteditingcontroller.clear();
+                          log(1239399399399399399);
                         } else {
                           showAlert(context);
                           // ScaffoldMessenger.of(context).showSnackBar(

@@ -1,49 +1,4 @@
-// // ignore_for_file: file_names
 
-// import 'package:flutter/material.dart';
-// import 'package:water_tracker/models/category/database.dart';
-
-// class MyStatic extends StatefulWidget {
-//   const MyStatic({super.key});
-
-//   @override
-//   State<MyStatic> createState() => _MyStaticState();
-// }
-
-// class _MyStaticState extends State<MyStatic> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.all(8.0),
-//       child: Container(
-//         color: Color.fromARGB(255, 255, 238, 238),
-//         child: Column(
-//           children: [
-//             Center(
-//                 child: Image.asset(
-//                     'lib/assets/images/animation_640_lelay9ee.gif')),
-//             // Expanded(
-//             //     child: ListView.builder(
-//             //         itemCount: MedicineCopyModel.getData().length,
-//             //         itemBuilder: (context, index) {
-//             //           final data = MedicineCopyModel.getData().getAt(index);
-//             //           return Card(
-//             //             elevation: 2,
-//             //             child: ListTile(
-//             //               title: Text('${data!.date} '),
-//             //               trailing: Text("${data.dose} dose "),
-//             //               subtitle: Text(data.dose),
-//             //               // leading: text(''),
-//             //             ),
-//             //           );
-//             //         })),
-//           ],
-//         ),
-//       ),
-//     );
-//     //
-//   }
-// }
 
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';

@@ -1,12 +1,12 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:water_tracker/statics/Static.dart';
+import 'package:water_tracker/pages/view/pie_chart/Static.dart';
 
-import 'package:water_tracker/widgets/pages/historyontab/water.dart';
-import 'package:water_tracker/widgets/pages/historyontab/medcines.dart';
+import 'package:water_tracker/pages/view/historyontab/water.dart';
+import 'package:water_tracker/pages/view/historyontab/medcines.dart';
 
-import 'package:water_tracker/widgets/pages/home/serach/serach.dart';
+import 'package:water_tracker/pages/view/home/serach/serach.dart';
 
 
 

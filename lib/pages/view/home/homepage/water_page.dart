@@ -6,16 +6,18 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:provider/provider.dart';
 
 import 'package:water_tracker/boxes/box.dart';
 import 'package:water_tracker/models/category/database.dart';
 import 'package:intl/intl.dart';
-import 'package:water_tracker/widgets/pages/addwater/add_water.dart';
+import 'package:water_tracker/pages/view/addwater/add_water.dart';
 
-import 'package:water_tracker/widgets/pages/home/homepage/water_list.dart';
-import 'package:water_tracker/widgets/pages/home/sidesettings/goal_picker.dart';
+import 'package:water_tracker/pages/view/home/homepage/water_list.dart';
+import 'package:water_tracker/pages/view/home/sidesettings/goal_picker.dart';
 
 import '../../../../models/category/database_functions.dart';
+import '../../../../provider/water.dart';
 
 ValueNotifier<double> indiacatorValue = ValueNotifier<double>(0);
 
@@ -30,12 +32,13 @@ class _MyFRistState extends State<MyFRist> {
   @override
   void initState() {
     final gg = WaterGoal.getdata();
-    currentgoal.value = gg.values.first.goal;
+    WaterProivder().currentgoal.value = gg.values.first.goal;
     WidgetsFlutterBinding.ensureInitialized();
-    grap(Boxes.getdata(), DateTime.now());
+   WaterProivder(). grap(Boxes.getdata(), DateTime.now());
     Boxes.getdata();
     WaterGoal.getdata();
     ProgressValue.getData();
+    context.read<WaterProivder>().currentgoal;
     goalNotifier.notifyListeners();
 
     super.initState();
@@ -127,14 +130,11 @@ class _MyFRistState extends State<MyFRist> {
                         //     child: Divider(
                         //       thickness: 1,
                         //     )),
-                        ValueListenableBuilder(
-                          valueListenable: currentgoal,
-                          builder: (context, value, child) => Text(
-                            '$value',
+                       Text(
+                            '${WaterProivder().displayGoal().toString()}',
                             style: const TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                        )
+                          )
                       ],
                     ),
                   );

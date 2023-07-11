@@ -10,12 +10,12 @@ import 'package:share_plus/share_plus.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:water_tracker/boxes/box.dart';
-import 'package:water_tracker/settingpages/about.dart';
-import 'package:water_tracker/splash_screen/splash.dart';
-import 'package:water_tracker/widgets/pages/home/Setting/Settings.dart';
-import 'package:water_tracker/statics/Static.dart';
+import 'package:water_tracker/pages/view/settingpages/about.dart';
+import 'package:water_tracker/pages/view/splash_screen/splash.dart';
+import 'package:water_tracker/pages/view/home/Setting/Settings.dart';
+import 'package:water_tracker/pages/view/pie_chart/Static.dart';
 
-import 'package:water_tracker/widgets/pages/home/sidesettings/goal_pickerpage.dart';
+import 'package:water_tracker/pages/view/home/sidesettings/goal_pickerpage.dart';
 
 import '../../../models/category/database.dart';
 import '../onbording/loading_screen.dart';

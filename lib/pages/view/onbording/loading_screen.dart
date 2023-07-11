@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:water_tracker/widgets/pages/home/side_bar.dart';
-import 'package:water_tracker/widgets/pages/onbording/onbording.dart';
+import 'package:water_tracker/pages/view/home/side_bar.dart';
+import 'package:water_tracker/pages/view/onbording/onbording.dart';
 
 class SplashReset extends StatefulWidget {
   @override

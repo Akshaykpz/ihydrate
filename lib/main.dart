@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:water_tracker/models/category/database.dart';
-import 'package:water_tracker/splash_screen/splash.dart';
+import 'package:water_tracker/pages/view/splash_screen/splash.dart';
 
-
-import 'package:water_tracker/widgets/pages/onbording/onbording.dart';
+import 'package:water_tracker/pages/view/onbording/onbording.dart';
 
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:water_tracker/provider/medicine.dart';
+import 'package:water_tracker/provider/water.dart';
 
 int? isviewed;
 Future<void> main() async {
@@ -53,13 +55,23 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => WaterProivder(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => MedcineProivder(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: isviewed != 0 ? const OnBoard() : SplashScreen(),
       ),
-      home: isviewed != 0 ? const OnBoard() : SplashScreen(),
     );
   }
 }

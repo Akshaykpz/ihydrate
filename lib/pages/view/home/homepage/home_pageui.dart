@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:water_tracker/boxes/box.dart';
 import 'package:water_tracker/models/category/database_functions.dart';
-import 'package:water_tracker/widgets/pages/home/homepage/medcine_page.dart';
+import 'package:water_tracker/pages/view/home/homepage/medcine_page.dart';
 
-import 'package:water_tracker/widgets/pages/home/homepage/water_page.dart';
+import 'package:water_tracker/pages/view/home/homepage/water_page.dart';
+import 'package:water_tracker/provider/water.dart';
 
 import '../../../../models/category/database.dart';
 
@@ -25,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    grap(Boxes.getdata(), DateTime.now());
+   WaterProivder(). grap(Boxes.getdata(), DateTime.now());
     WaterGoal.getdata();
     tabController = TabController(length: 2, vsync: this)
       ..addListener(() {
